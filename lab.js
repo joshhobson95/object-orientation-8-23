@@ -281,13 +281,15 @@ class Wizard {
     this.name = name
     this.age = age
     this.favoriteSpell = favoriteSpell
-    function castSpell(){
+    function castSpell(favoriteSpell){
       console.log(`${name} has cast ${favoriteSpell}`)
   }
   }
 }
 let Harry = new Wizard('Harry', 20, "boom")
-console.log(castSpell(Harry))
+ console.log()
+ //this dont work
+ //console log is wrong 
 
 
 
@@ -316,6 +318,27 @@ console.log(castSpell(Harry))
 
 //Code Here
 
+class Phone {
+  constructor(brand, model, storage, color, price){
+    this.brand = brand
+    this.model = model
+    this.storage = storage
+    this.color = color
+    this.price = price
+    this.sold = false
+  }
+  //creating methods
+  //methods are not inside of your constructor
+  sell(){
+    this.sold = true
+    console.log(`${this.brand} ${this.model} has been sold`)
+  }
+
+  changePrice(newPrice){
+    this.price = newPrice
+  }
+}
+
   
 /*
     Next make three new phone instances using your class.
@@ -328,7 +351,9 @@ console.log(castSpell(Harry))
 */
 
 //Code Here
+let iphone = new Phone('Apple', '13 Pro + X', 256, 'Space Grey', 160000)
 
+console.log(iphone)
 /* 
   Call the changePrice function on one of your phones, 
   don't forget to pass in a new price 
@@ -337,6 +362,9 @@ console.log(castSpell(Harry))
 */ 
 
 //Code Here 
+
+iphone.changePrice(1300)
+console.log(iphone)
 
 
 /*
@@ -365,6 +393,9 @@ const colors = {
 //do not edit this object
 
 //Code Here 
+//   ... copies aparently!!
+const colorsCopy ={...colors}
+console.log(colorsCopy)
 
 
 
@@ -394,6 +425,8 @@ const shippingInfo = {
 
 //Code Here
 
+const helensInfo = {...contactInfo, ...shippingInfo}
+console.log(helensInfo)
 
 //Print helensInfo to see what it looks like, there should be no repeating properties.
 
