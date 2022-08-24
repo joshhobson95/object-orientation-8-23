@@ -173,8 +173,11 @@ let properties ={
   return num1 + num2 + num3 + num4
 }
 
-
-
+// function totalPopulation(obj) {
+//   const {utah, california, texas, arizona} = obj
+//   return utah + california + texas + arizona
+// }
+//Easier way^^
 console.log(totalPopulation(properties))
 
 //////////////////////////// PROBLEM 9 ////////////////////////////
@@ -281,15 +284,20 @@ class Wizard {
     this.name = name
     this.age = age
     this.favoriteSpell = favoriteSpell
-    function castSpell(favoriteSpell){
-      console.log(`${name} has cast ${favoriteSpell}`)
+  }
+    castSpell(){
+      console.log(`${this.name} has cast ${this.favoriteSpell}`)
   }
   }
-}
+
 let Harry = new Wizard('Harry', 20, "boom")
- console.log()
- //this dont work
- //console log is wrong 
+Harry.castSpell()
+
+
+
+//super close just had to Harry.castSpell()
+//not in a console.log just calling the castSpell command
+//becuase it is already a console log
 
 
 
@@ -445,12 +453,26 @@ console.log(helensInfo)
 
 //Code Here 
 
+class Vehicle {
+  constructor(capacity, color, mileage) {
+    this.capacity = capacity
+    this.color = color
+    this.mileage = mileage
+  }
+
+  move(miles) {
+    this.mileage += miles
+    console.log(this.mileage)
+  }
+}
 
 /*
   Create a vehicle using your new class and save it to a variable called myFirstVehicle
 */
 
 //Code Here
+
+let myFirstVehicle = new Vehicle(2, 'black', 10000)
 
 
 /* 
@@ -463,17 +485,39 @@ console.log(helensInfo)
 
 //Code Here
 
+//extends example
+//super pulls parameters from above
+//this. adds the new
+
+class Motorcycle extends Vehicle {
+  constructor(capacity, color, mileage, make, isCool) {
+    super(capacity, color, mileage)
+    this.make = make
+    this.isCool = isCool
+  }
+}
+
+
+
 /*
   Create a Motorcycle using your new class and save it to a variable called myFirstMotorcycle
 */
 
 //Code Here 
 
+//then this adds a new vehicle in the new class of motorcycle
+
+const myFirstMotorcycle = new Motorcycle(1, 'pink', 7000, 'Harley', false)
+
 /*
   Call the move function on myFirstMotorcycle (don't forget the parameter)
 */
 
+myFirstMotorcycle.move(100)
+
 /*
+
+
   Let's make another class based off of Vehicle. 
 
   Write a class called Boat that *extends* the Vehicle class. The constructor should take in
@@ -491,6 +535,27 @@ console.log(helensInfo)
 
 //Code Here
 
+class Boat extends Vehicle {
+  constructor(capacity, color, mileage, name, type, isSeaworthy) {
+    super(capacity, color, mileage)
+    this.name = name
+    this.type = type
+    this.isSeaworthy = isSeaworthy
+  }
+
+  checkSeaworthiness() {
+    if (this.isSeaworthy) {
+      console.log(`The ${this.type} ${this.name} is seaworthy!`)
+    } else {
+      console.log(`You need to get your ${this.type} in shape!`)
+    }
+  }
+
+  performMaintenance() {
+    this.isSeaworthy = true
+  }
+}
+
 
 /*
   Create a new boat using your class. You can choose whatever values you like for all the 
@@ -499,11 +564,17 @@ console.log(helensInfo)
 
 //Code Here
 
+const myFirstBoat = new Boat(10, 'red', 20000, 'Mark 37', 'yacht', false)
+
+
 /*
   Call the checkSeaworthiness method on your new boat
 */
 
 //Code Here
+
+myFirstBoat.checkSeaworthiness()
+
 
 /*
   Now run the performMaintenance method on your boat
@@ -511,8 +582,13 @@ console.log(helensInfo)
 
 //Code Here 
 
+myFirstBoat.performMaintenance()
+
+
 /*
   Check the seaworthiness once more (you should be ready for the water!)
 */
 
 //Code Here
+
+myFirstBoat.checkSeaworthiness()
